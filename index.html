@@ -4,10 +4,56 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>FooBar</title>
+    <link rel="stylesheet" href="https://use.typekit.net/vpf4gkr.css" />
+    <link rel="stylesheet" href="/style.scss" />
   </head>
   <body>
-    <div id="app"></div>
+    <main>
+      <div class="medarbejderinfo generel">
+        <h2>MEDARBEJDERE</h2>
+      </div>
+      <div class="queue generel">
+        <h2 class="inline"></h2>
+      </div>
+      <div class="hvembetjenes generel">
+        <h2>BETJENES</h2>
+      </div>
+      <div class="dagens generel">
+        <h2>DAGENS ØL</h2>
+      </div>
+      <div class="lager generel">
+        <h2>LAGER</h2>
+      </div>
+    </main>
+
+    <template class="medarbejdere">
+      <p class="medarbejder"></p>
+      <p class="status"></p>
+    </template>
+
+    <!--  <template class="thequeue">
+      <p class="inqueue"></p>
+    </template> -->
+
+    <template class="betjenes">
+      <h2 class="betjenesnu"></h2>
+    </template>
+
+    <template class="tempdagens">
+      <img src="" alt="" />
+      <h2 class="navn"></h2>
+      <p class="alk"></p>
+      <p class="type"></p>
+    </template>
+
+    <template class="templager">
+      <img src="" alt="" />
+      <h2 class="navn"></h2>
+      <p class="alk"></p>
+      <p class="type"></p>
+    </template>
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>

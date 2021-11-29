@@ -13,8 +13,9 @@ async function hentData() {
 }
 
 function visData(data) {
-  const medarbejderinfo = document.querySelector(".medarbejderinfo");
+  const medarbejderinfo = document.querySelector(".medarbejderinfo-data");
   const temp = document.querySelector(".medarbejdere");
+  medarbejderinfo.textContent = "";
 
   data.bartenders.forEach((elm) => {
     const klon = temp.cloneNode(true).content;
@@ -26,8 +27,10 @@ function visData(data) {
 
   document.querySelector(".inline").textContent = `KØ: ${data.queue.length}`;
 
-  const betjenes = document.querySelector(".hvembetjenes");
+  const betjenes = document.querySelector(".hvembetjenes-data");
   const tempbetjenes = document.querySelector(".betjenes");
+
+  betjenes.textContent = "";
 
   data.serving.forEach((elm) => {
     const klon = tempbetjenes.cloneNode(true).content;
@@ -36,8 +39,9 @@ function visData(data) {
     betjenes.appendChild(klon);
   });
 
-  const dagens = document.querySelector(".dagens");
+  const dagens = document.querySelector(".dagens-data");
   const tempdagens = document.querySelector(".tempdagens");
+  dagens.textContent = "";
 
   data.taps.forEach((elm) => {
     const klon = tempdagens.cloneNode(true).content;
@@ -46,8 +50,9 @@ function visData(data) {
     dagens.appendChild(klon);
   });
 
-  const lager = document.querySelector(".lager");
+  const lager = document.querySelector(".lager-data");
   const templager = document.querySelector(".templager");
+  lager.textContent = "";
 
   data.storage.forEach((elm) => {
     const klon = templager.cloneNode(true).content;
@@ -65,7 +70,6 @@ function visData(data) {
     queue.appendChild(klon);
   }); */
 }
-/* setInterval(function () {
+setInterval(function () {
   hentData();
 }, 10000);
- */

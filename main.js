@@ -12,6 +12,27 @@ async function hentData() {
   visData(data);
 }
 
+async function hentTyper() {
+  const resultatTyper = await fetch("https://bandoen.herokuapp.com/beertypes");
+  const dataTyper = await resultatTyper.json();
+
+  console.log(dataTyper);
+  visTypeData(dataTyper);
+}
+
+/* function visTypeData(dataTyper) {
+  const temp = document.querySelector(".dagens-data");
+  const tempalk = document.querySelector(".tempdagens");
+  temp.textContent = "";
+
+  dataTyper.forEach((type) => {
+    const klon = tempalk.cloneNode(true).content;
+    klon.querySelector(".alk").textContent = type.alc;
+
+    temp.appendChild(klon);
+  });
+} */
+
 function visData(data) {
   const medarbejderinfo = document.querySelector(".medarbejderinfo-data");
   const temp = document.querySelector(".medarbejdere");
@@ -60,16 +81,33 @@ function visData(data) {
 
     lager.appendChild(klon);
   });
-  /* const queue = document.querySelector(".queue");
-  const tempqueue = document.querySelector(".thequeue");
 
-  data.queue.forEach((elm) => {
-    const klon = tempqueue.cloneNode(true).content;
-    klon.querySelector(".inqueue").textContent = `Kø: ${queue.length}`;
+  const queueSize = [];
+  if (document.querySelectorAll(".baren").length < 15) {
+    console.log("JA", document.querySelectorAll(".baren").length);
+    queueSize.push(data.queue.length);
+  } else {
+    let elements = document.getElementsByClassName("baren");
+    let required = elements[0];
+    required.remove();
+    queueSize.push(data.queue.length);
+  }
 
-    queue.appendChild(klon);
-  }); */
+  const bar = document.querySelector(".bars");
+  const bartemp = document.querySelector(".thequeue");
+
+  queueSize.forEach((elm) => {
+    console.log("queue", queueSize);
+    console.log(elm);
+    const klon = bartemp.cloneNode(true).content;
+    klon.querySelector(".baren").style.height =
+      data.queue.length.toString() + "px";
+
+    bar.appendChild(klon);
+  });
 }
 setInterval(function () {
   hentData();
 }, 10000);
+
+hentTyper();

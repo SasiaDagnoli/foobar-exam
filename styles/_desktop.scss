@@ -3,4 +3,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
+  .dagens {
+    grid-row: 1/3;
+  }
 }

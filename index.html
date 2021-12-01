@@ -10,25 +10,30 @@
   </head>
   <body>
     <main>
+      <div class="dagens generel">
+        <h2>ON TAP TODAY:</h2>
+        <div class="dagens-data"></div>
+      </div>
       <div class="medarbejderinfo generel">
-        <h2>MEDARBEJDERE:</h2>
+        <h2>STAFF:</h2>
         <div class="medarbejderinfo-data"></div>
       </div>
       <div class="queue generel">
         <h2 class="inline"></h2>
         <div class="bars"></div>
       </div>
-      <div class="hvembetjenes generel">
-        <h2>BETJENES:</h2>
-        <div class="hvembetjenes-data"></div>
-      </div>
-      <div class="dagens generel">
-        <h2>DAGENS ØL:</h2>
-        <div class="dagens-data"></div>
-      </div>
       <div class="lager generel">
-        <h2>LAGER:</h2>
+        <h2>STORAGE:</h2>
         <div class="lager-data"></div>
+      </div>
+      <div class="tidogbetjenes">
+        <div class="hvembetjenes generel">
+          <h2>SERVING:</h2>
+          <div class="hvembetjenes-data"></div>
+        </div>
+        <div class="tid generel">
+          <h2>TIME TO CLOSE:</h2>
+        </div>
       </div>
     </main>
 
@@ -51,15 +56,15 @@
     <template class="tempdagens">
       <img src="" alt="" />
       <h2 class="navn"></h2>
-      <p class="alk"></p>
+      <p class="alc"></p>
       <p class="type"></p>
     </template>
 
     <template class="templager">
-      <img src="" alt="" />
-      <h2 class="navn"></h2>
-      <p class="alklager"></p>
-      <p class="type"></p>
+      <div class="lagerflex">
+        <div class="antal"></div>
+        <h2 class="navn"></h2>
+      </div>
     </template>
 
     <script type="module" src="/main.js"></script>

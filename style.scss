@@ -10,6 +10,8 @@
 @use "styles/fonts";
 @use "styles/desktop";
 @use "styles/dashboard";
+@use "styles/barchart";
+@use "styles/animations";
 
 .betjenesnu {
   border: 2px solid transparent;
@@ -46,16 +48,25 @@ body {
   background-color: #292e3d;
 }
 
-.baren {
-  border: 1px solid black;
-  background-color: hotpink;
-  margin-right: 1px;
-  height: 100px;
+.antal {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: white;
   width: 20px;
+  height: 20px;
 }
 
-.bars {
-  /*  display: grid;
-  grid-template-columns: repeat(15, 1fr); */
+.lagerflex {
   display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.colorover5 {
+  background: linear-gradient(to right, #56ab2f, #a8e063);
+}
+
+.colorunder5 {
+  background: linear-gradient(to left, #ed213a, #93291e);
 }

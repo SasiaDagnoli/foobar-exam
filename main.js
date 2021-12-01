@@ -20,18 +20,19 @@ async function hentTyper() {
   visTypeData(dataTyper);
 }
 
-/* function visTypeData(dataTyper) {
+function visTypeData(dataTyper) {
   const temp = document.querySelector(".dagens-data");
   const tempalk = document.querySelector(".tempdagens");
-  temp.textContent = "";
-
+  console.log("TEST1");
   dataTyper.forEach((type) => {
     const klon = tempalk.cloneNode(true).content;
-    klon.querySelector(".alk").textContent = type.alc;
+    klon.querySelector(".alc").textContent = type.alc;
+    console.log(type.alc);
 
     temp.appendChild(klon);
   });
-} */
+  console.log("TEST2");
+}
 
 function visData(data) {
   const medarbejderinfo = document.querySelector(".medarbejderinfo-data");
@@ -40,8 +41,9 @@ function visData(data) {
 
   data.bartenders.forEach((elm) => {
     const klon = temp.cloneNode(true).content;
-    klon.querySelector(".medarbejder").textContent = elm.name;
-    klon.querySelector(".status").textContent = elm.status;
+    klon.querySelector(
+      ".medarbejder"
+    ).textContent = `${elm.name} ${elm.status}`;
 
     medarbejderinfo.appendChild(klon);
   });
@@ -77,13 +79,24 @@ function visData(data) {
 
   data.storage.forEach((elm) => {
     const klon = templager.cloneNode(true).content;
-    klon.querySelector(".navn").textContent = elm.name;
-
+    klon.querySelector(".navn").textContent = `${elm.name} ${elm.amount}`;
+    klon.querySelector(".antal").style.width = elm.amount.toString() + "0px";
+    /* if (document.querySelectorAll(".antal") < 5) {
+      document.querySelector(".antal").classList.add("colorover5");
+    } */
+    if (elm.amount > 5) {
+      klon.querySelector(".antal").classList.add("colorover5");
+    } else {
+      console.log("RØD");
+      klon.querySelector(".antal").classList.add("colorunder5");
+    }
+    /*  console.log(document.querySelector(".antal").height); */
     lager.appendChild(klon);
+    //setColorStorage(data);
   });
 
   const queueSize = [];
-  if (document.querySelectorAll(".baren").length < 15) {
+  if (document.querySelectorAll(".baren").length < 18) {
     console.log("JA", document.querySelectorAll(".baren").length);
     queueSize.push(data.queue.length);
   } else {
@@ -101,13 +114,21 @@ function visData(data) {
     console.log(elm);
     const klon = bartemp.cloneNode(true).content;
     klon.querySelector(".baren").style.height =
-      data.queue.length.toString() + "px";
+      data.queue.length.toString() + "0px";
 
     bar.appendChild(klon);
   });
 }
+/* hentTyper(); */
 setInterval(function () {
   hentData();
 }, 10000);
 
-hentTyper();
+/* function setColorStorage(data) {
+  console.log("ER VI HER");
+  data.storage.forEach((amount) => {
+    if (data.storage.amount < 5) {
+      document.querySelector(".antal").classList.add("colorover5");
+    }
+  });
+} */

@@ -70,3 +70,34 @@ body {
 .colorunder5 {
   background: linear-gradient(to left, #ed213a, #93291e);
 }
+
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#hours,
+#minutes,
+#seconds {
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 20px 10px 10px 10px;
+}
+
+.dagensdiv {
+  border: 2px solid white;
+  border-radius: 20px;
+  margin: 10px 10px 10px 0px;
+  padding: 0px 5px 5px 5px;
+}
+
+.dagensdiv h2 {
+  font-size: 1.5rem;
+}
+
+.dagensdiv p {
+  font-size: 1rem;
+}

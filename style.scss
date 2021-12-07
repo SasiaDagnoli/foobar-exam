@@ -12,6 +12,7 @@
 @use "styles/dashboard";
 @use "styles/barchart";
 @use "styles/animations";
+@use "styles/loginform";
 
 .betjenesnu {
   border: 2px solid transparent;
@@ -22,9 +23,23 @@
   margin: 10px;
 }
 
-.hvembetjenes-data {
+.hvembetjenes-data,
+.servingnowcstm {
   display: flex;
   flex-wrap: wrap;
+}
+
+.ontapimg {
+  width: 10%;
+}
+
+.dagensdiv {
+  display: flex;
+}
+
+.ontapflex {
+  display: flex;
+  flex-direction: column;
 }
 
 .avatar {
@@ -71,7 +86,8 @@ body {
   background: linear-gradient(to left, #ed213a, #93291e);
 }
 
-.countdown {
+.countdown,
+.countdowncstm {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,7 +95,10 @@ body {
 
 #hours,
 #minutes,
-#seconds {
+#seconds,
+#hourscstm,
+#minutescstm,
+#secondscstm {
   background-color: white;
   border: 1px solid transparent;
   border-radius: 20px;
@@ -100,4 +119,8 @@ body {
 
 .dagensdiv p {
   font-size: 1rem;
+}
+
+.hidden {
+  display: none;
 }

@@ -1,0 +1,12 @@
+.login-form-field {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0px 10px 0px;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+}

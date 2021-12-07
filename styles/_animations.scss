@@ -24,3 +24,16 @@
     transform: translateY(100);
   }
 }
+
+.lessstorage {
+  animation: storagewidth_kf 1s 1;
+}
+
+@keyframes storagewidth_kf {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

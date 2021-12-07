@@ -17,11 +17,21 @@ p {
 
 #hours,
 #minutes,
-#seconds {
+#seconds,
+#hourscstm,
+#minutescstm,
+#secondscstm {
   color: #3b4258;
   text-align: center;
 }
 
 .betjenesnu {
   color: #3b4258;
+}
+
+::placeholder {
+  color: white;
+  font: 100% $font-stack;
+  font-weight: 400;
+  font-size: 1rem;
 }

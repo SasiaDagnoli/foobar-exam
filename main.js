@@ -1,29 +1,29 @@
 "use strict";
 
-window.addEventListener("DOMContentLoaded", hentData);
+window.addEventListener("DOMContentLoaded", fetchData);
 
-async function hentData(first = true) {
+async function fetchData(first = true) {
   const resultat = await fetch("https://bandoen.herokuapp.com/");
   const data = await resultat.json();
 
   console.log("data", data);
   if (first) {
-    hentTyper();
-    visData(data);
+    fetchTypes();
+    displayData(data);
     showDataCstm(data);
   } else {
-    opdaterData(data);
+    updateData(data);
     updateCstmData(data);
   }
 }
 
-async function hentTyper() {
+async function fetchTypes() {
   const resultatTyper = await fetch("https://bandoen.herokuapp.com/beertypes");
   const dataTyper = await resultatTyper.json();
-  visTypeData(dataTyper);
+  displayTypeData(dataTyper);
 }
 
-function visTypeData(dataTyper) {
+function displayTypeData(dataTyper) {
   dataTyper.forEach((type) => {
     const parents = document.querySelectorAll(`[data-name="${type.name}"]`);
     if (parents.length) {
@@ -35,7 +35,7 @@ function visTypeData(dataTyper) {
   });
 }
 
-function opdaterData(data) {
+function updateData(data) {
   updateStaffData(data);
   updateQueueData(data);
   updateServingData(data);
@@ -43,7 +43,7 @@ function opdaterData(data) {
   updateStorageData(data);
 }
 
-function visData(data) {
+function displayData(data) {
   displayStaffData(data);
   displayQueueData(data);
   displayServingData(data);
@@ -289,7 +289,7 @@ function updateServingDataCstm(data) {
 }
 
 setInterval(function () {
-  hentData(false);
+  fetchData(false);
 }, 10000);
 
 countdown();
@@ -311,7 +311,6 @@ function countdown() {
     let hh = pad((remain / 60 / 60) % 60);
     let mm = pad((remain / 60) % 60);
     let ss = pad(remain % 60);
-    /* document.getElementById("time").innerHTML = hh + ":" + mm + ":" + ss; */
     document.getElementById("hours").innerHTML = hh;
     document.getElementById("minutes").innerHTML = mm;
     document.getElementById("seconds").innerHTML = ss;
@@ -337,5 +336,5 @@ function countdown() {
     }
   });
 
-  document.addEventListener("DOMContentLoaded", tick);
+  tick();
 }

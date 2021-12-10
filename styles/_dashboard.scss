@@ -6,3 +6,94 @@
   padding: 20px;
   margin: 10px 20px 5px 20px;
 }
+
+.servingnow {
+  border: 2px solid transparent;
+  background-color: #ffffff;
+  border-radius: 15px;
+  width: fit-content;
+  padding: 10px;
+  margin: 10px;
+}
+
+.hvembetjenes-data,
+.servingnowcstm {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ontapimg {
+  width: 10%;
+}
+
+.tapwrapper {
+  display: flex;
+}
+
+.ontapflex {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar {
+  border: 1px solid transparent;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  margin: 0px 8px 8px 0px;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.amount {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: white;
+  width: 20px;
+  height: 20px;
+}
+
+.storageflex {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.colorover5 {
+  background: linear-gradient(to right, #56ab2f, #a8e063);
+}
+
+.colorunder5 {
+  background: linear-gradient(to left, #ed213a, #93291e);
+}
+
+.countdown,
+.countdowncstm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#hours,
+#minutes,
+#seconds,
+#hourscstm,
+#minutescstm,
+#secondscstm {
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 20px 10px 10px 10px;
+}
+
+.tapwrapper {
+  border: 2px solid white;
+  border-radius: 20px;
+  margin: 10px 10px 10px 0px;
+  padding: 0px 5px 5px 5px;
+}

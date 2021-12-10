@@ -1,17 +1,3 @@
-/* .baren {
-  animation: bars_kf 2s 1;
-}
-
-@keyframes bars_kf {
-  0% {
-    transform: translateX(0);
-    animation-timing-function: ease-in;
-  }
-  100% {
-    transform: translateX(100);
-  }
-} */
-
 .baren {
   animation: barsheight_kf 1s 1;
 }
@@ -22,18 +8,5 @@
   }
   100% {
     transform: translateY(100);
-  }
-}
-
-.lessstorage {
-  animation: storagewidth_kf 1s 1;
-}
-
-@keyframes storagewidth_kf {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
   }
 }

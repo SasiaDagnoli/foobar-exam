@@ -1,5 +1,3 @@
-//import './style.css'
-
 "use strict";
 
 window.addEventListener("DOMContentLoaded", hentData);
@@ -22,8 +20,6 @@ async function hentData(first = true) {
 async function hentTyper() {
   const resultatTyper = await fetch("https://bandoen.herokuapp.com/beertypes");
   const dataTyper = await resultatTyper.json();
-
-  console.log(dataTyper);
   visTypeData(dataTyper);
 }
 
@@ -34,65 +30,43 @@ function visTypeData(dataTyper) {
       parents.forEach((parent) => {
         parent.querySelector(".alc").textContent = type.alc;
         parent.querySelector(".type").textContent = type.category;
-        console.log(type.name);
       });
     }
   });
 }
 
 function opdaterData(data) {
-  document.querySelector(".inline").textContent = `KØ: ${data.queue.length}`;
+  updateStaffData(data);
+  updateQueueData(data);
+  updateServingData(data);
+  updateTapData(data);
+  updateStorageData(data);
+}
+
+function visData(data) {
+  displayStaffData(data);
+  displayQueueData(data);
+  displayServingData(data);
+  displayOnTapData(data);
+  displayStorageData(data);
+}
+
+function displayStaffData(data) {
+  const medarbejderinfo = document.querySelector(".medarbejderinfo-data");
+  const temp = document.querySelector(".staff");
 
   data.bartenders.forEach((elm) => {
-    document.querySelector(
-      `[data-bartendername="${elm.name}"] .status`
-    ).textContent = elm.status;
+    const klon = temp.cloneNode(true).content;
+    klon.querySelector(".employee").textContent = elm.name;
+    klon.querySelector(".flex").dataset.bartendername = elm.name;
+    medarbejderinfo.appendChild(klon);
   });
+}
 
-  const betjenes = document.querySelector(".hvembetjenes-data");
-  const tempbetjenes = document.querySelector(".betjenes");
-  betjenes.innerHTML = "";
-
-  data.serving.forEach((elm) => {
-    const klon = tempbetjenes.cloneNode(true).content;
-    klon.querySelector(".betjenesnu").textContent = elm.id;
-
-    betjenes.appendChild(klon);
-  });
-
-  data.taps.forEach((elm) => {
-    const elmBeer = document.querySelector(
-      `.dagensdiv[data-name="${elm.beer}"]`
-    );
-    console.log("Beer", elmBeer, elm.beer);
-    elmBeer.querySelector(".navn").textContent = elm.beer;
-  });
-
-  data.storage.forEach((elm) => {
-    const elmAmount = document.querySelector(
-      `.lagerflex[data-storagebar="${elm.name}"]`
-    );
-    //console.log("AMOUNTBEER", elmAmount);
-    elmAmount.querySelector(".navn").textContent = elm.name;
-    elmAmount.querySelector(".antaltal").textContent = elm.amount;
-
-    // console.log("AMOUNT", elm.amount, elm.name);
-    elmAmount
-      .querySelector(".antal")
-      .style.setProperty("width", elm.amount.toString() + "0px");
-    if (elm.amount > 5) {
-      document
-        .querySelector(".antal")
-        .classList.replace(".colorunder5", "colorover5");
-    } else {
-      document
-        .querySelector(".antal")
-        .classList.replace(".colorover5", "colorunder5");
-    }
-  });
+function displayQueueData(data) {
+  document.querySelector(".inline").textContent = `KØ: ${data.queue.length}`;
 
   const queueSize = [];
-  console.log("KØEM", queueSize);
   if (document.querySelectorAll(".baren").length < 18) {
     queueSize.push(data.queue.length);
   } else {
@@ -106,8 +80,6 @@ function opdaterData(data) {
   const bartemp = document.querySelector(".thequeue");
 
   queueSize.forEach((elm) => {
-    console.log("queue", queueSize);
-    console.log(elm);
     const klon = bartemp.cloneNode(true).content;
     klon.querySelector(".baren").style.height =
       data.queue.length.toString() + "0px";
@@ -116,35 +88,21 @@ function opdaterData(data) {
   });
 }
 
-/* import { taps } from "./taps.js";
-
-taps(); */
-
-function visData(data) {
-  const medarbejderinfo = document.querySelector(".medarbejderinfo-data");
-  const temp = document.querySelector(".medarbejdere");
-
-  data.bartenders.forEach((elm) => {
-    const klon = temp.cloneNode(true).content;
-    klon.querySelector(".medarbejder").textContent = elm.name;
-    klon.querySelector(".flex").dataset.bartendername = elm.name;
-    medarbejderinfo.appendChild(klon);
-  });
-
-  document.querySelector(".inline").textContent = `KØ: ${data.queue.length}`;
-
-  const betjenes = document.querySelector(".hvembetjenes-data");
-  const tempbetjenes = document.querySelector(".betjenes");
+function displayServingData(data) {
+  const servingDisplay = document.querySelector(".hvembetjenes-data");
+  const tempServing = document.querySelector(".serving");
 
   data.serving.forEach((elm) => {
-    const klon = tempbetjenes.cloneNode(true).content;
-    klon.querySelector(".betjenesnu").textContent = elm.id;
+    const klon = tempServing.cloneNode(true).content;
+    klon.querySelector(".servingnow").textContent = elm.id;
 
-    betjenes.appendChild(klon);
+    servingDisplay.appendChild(klon);
   });
+}
 
+function displayOnTapData(data) {
   const dagens = document.querySelector(".dagens-data");
-  const tempdagens = document.querySelector(".tempdagens");
+  const temptap = document.querySelector(".temptap");
 
   let imgName;
   data.taps.forEach((elm) => {
@@ -155,34 +113,45 @@ function visData(data) {
   });
 
   data.taps.forEach((elm) => {
-    const klon = tempdagens.cloneNode(true).content;
-    klon.querySelector(".dagensdiv").dataset.name = elm.beer;
-    klon.querySelector(".navn").textContent = elm.beer;
+    const klon = temptap.cloneNode(true).content;
+    klon.querySelector(".tapwrapper").dataset.name = elm.beer;
+    klon.querySelector(".name").textContent = elm.beer;
     klon.querySelector(".ontapimg").src = `img/${imgName}`;
-    console.log("HEJ", imgName);
     dagens.appendChild(klon);
   });
+}
 
+function displayStorageData(data) {
   const lager = document.querySelector(".lager-data");
-  const templager = document.querySelector(".templager");
+  const tempStorage = document.querySelector(".tempstorage");
 
   data.storage.forEach((elm) => {
-    const klon = templager.cloneNode(true).content;
-    klon.querySelector(".lagerflex").dataset.storagebar = elm.name;
-    klon.querySelector(".navn").textContent = elm.name;
-    klon.querySelector(".antaltal").textContent = elm.amount;
-    klon.querySelector(".antal").style.width = elm.amount.toString() + "0px";
+    const klon = tempStorage.cloneNode(true).content;
+    klon.querySelector(".storageflex").dataset.storagebar = elm.name;
+    klon.querySelector(".name").textContent = elm.name;
+    klon.querySelector(".amounttxt").textContent = elm.amount;
+    klon.querySelector(".amount").style.width = elm.amount.toString() + "0px";
     if (elm.amount > 5) {
-      klon.querySelector(".antal").classList.add("colorover5");
+      klon.querySelector(".amount").classList.add("colorover5");
     } else {
-      klon.querySelector(".antal").classList.add("colorunder5");
+      klon.querySelector(".amount").classList.add("colorunder5");
     }
     lager.appendChild(klon);
   });
+}
 
+function updateStaffData(data) {
+  data.bartenders.forEach((elm) => {
+    document.querySelector(
+      `[data-bartendername="${elm.name}"] .status`
+    ).textContent = elm.status;
+  });
+}
+
+function updateQueueData(data) {
+  document.querySelector(".inline").textContent = `KØ: ${data.queue.length}`;
   const queueSize = [];
   if (document.querySelectorAll(".baren").length < 18) {
-    console.log("JA", document.querySelectorAll(".baren").length);
     queueSize.push(data.queue.length);
   } else {
     let elements = document.getElementsByClassName("baren");
@@ -195,13 +164,127 @@ function visData(data) {
   const bartemp = document.querySelector(".thequeue");
 
   queueSize.forEach((elm) => {
-    console.log("queue", queueSize);
-    console.log(elm);
     const klon = bartemp.cloneNode(true).content;
     klon.querySelector(".baren").style.height =
       data.queue.length.toString() + "0px";
 
     bar.appendChild(klon);
+  });
+}
+
+function updateServingData(data) {
+  const servingDisplay = document.querySelector(".hvembetjenes-data");
+  const tempServing = document.querySelector(".serving");
+  servingDisplay.innerHTML = "";
+
+  data.serving.forEach((elm) => {
+    const klon = tempServing.cloneNode(true).content;
+    klon.querySelector(".servingnow").textContent = elm.id;
+
+    servingDisplay.appendChild(klon);
+  });
+}
+
+function updateTapData(data) {
+  data.taps.forEach((elm) => {
+    const elmBeer = document.querySelector(
+      `.tapwrapper[data-name="${elm.beer}"]`
+    );
+    elmBeer.querySelector(".name").textContent = elm.beer;
+  });
+}
+
+function updateStorageData(data) {
+  data.storage.forEach((elm) => {
+    const elmAmount = document.querySelector(
+      `.storageflex[data-storagebar="${elm.name}"]`
+    );
+    elmAmount.querySelector(".name").textContent = elm.name;
+    elmAmount.querySelector(".amounttxt").textContent = elm.amount;
+
+    elmAmount
+      .querySelector(".amount")
+      .style.setProperty("width", elm.amount.toString() + "0px");
+    if (elm.amount > 5) {
+      document
+        .querySelector(".amount")
+        .classList.replace(".colorunder5", "colorover5");
+    } else {
+      document
+        .querySelector(".amount")
+        .classList.replace(".colorover5", "colorunder5");
+    }
+  });
+}
+
+function updateCstmData(data) {
+  updateQueueDataCstm(data);
+  updateOntapDataCstm(data);
+  updateServingDataCstm(data);
+}
+
+function showDataCstm(data) {
+  displayQueueDataCstm(data);
+  displayOnTapDataCstm(data);
+  displayServingDataCstm(data);
+}
+
+function displayQueueDataCstm(data) {
+  document.querySelector(
+    ".inlinecstm"
+  ).textContent = `QUEUE: ${data.queue.length}`;
+}
+
+function displayOnTapDataCstm(data) {
+  const todays = document.querySelector(".datatodaycstm");
+  const temptoday = document.querySelector(".temptap");
+
+  data.taps.forEach((elm) => {
+    const clone = temptoday.cloneNode(true).content;
+    clone.querySelector(".tapwrapper").dataset.name = elm.beer;
+    clone.querySelector(".name").textContent = elm.beer;
+
+    todays.appendChild(clone);
+  });
+}
+
+function displayServingDataCstm(data) {
+  const serving = document.querySelector(".servingnowcstm");
+  const tempServingCstm = document.querySelector(".serving");
+
+  data.serving.forEach((elm) => {
+    const clone = tempServingCstm.cloneNode(true).content;
+    clone.querySelector(".servingnow").textContent = elm.id;
+
+    serving.appendChild(clone);
+  });
+}
+
+function updateQueueDataCstm(data) {
+  document.querySelector(
+    ".inlinecstm"
+  ).textContent = `QUEUE: ${data.queue.length}`;
+}
+
+function updateOntapDataCstm(data) {
+  data.taps.forEach((elm) => {
+    const elmBeerCstm = document.querySelector(
+      `.tapwrapper[data-name="${elm.beer}"]`
+    );
+    elmBeerCstm.querySelector(".name").textContent = elm.beer;
+  });
+}
+
+function updateServingDataCstm(data) {
+  const serving = document.querySelector(".servingnowcstm");
+  const tempServingCstm = document.querySelector(".serving");
+  serving.innerHTML = "";
+
+  data.serving.forEach((elm) => {
+    const clone = tempServingCstm.cloneNode(true).content;
+    clone.querySelector(".servingnow").textContent = elm.id;
+
+    serving.appendChild(clone);
   });
 }
 
@@ -209,55 +292,9 @@ setInterval(function () {
   hentData(false);
 }, 10000);
 
-function updateCstmData(data) {
-  document.querySelector(
-    ".inlinecstm"
-  ).textContent = `QUEUE: ${data.queue.length}`;
-}
-
-function showDataCstm(data) {
-  document.querySelector(
-    ".inlinecstm"
-  ).textContent = `QUEUE: ${data.queue.length}`;
-
-  const todays = document.querySelector(".datatodaycstm");
-  const temptoday = document.querySelector(".tempdagens");
-
-  data.taps.forEach((elm) => {
-    const clone = temptoday.cloneNode(true).content;
-    clone.querySelector(".dagensdiv").dataset.name = elm.beer;
-    clone.querySelector(".navn").textContent = elm.beer;
-
-    todays.appendChild(clone);
-  });
-
-  const serving = document.querySelector(".servingnowcstm");
-  const tempserving = document.querySelector(".betjenes");
-
-  data.serving.forEach((elm) => {
-    const clone = tempserving.cloneNode(true).content;
-    clone.querySelector(".betjenesnu").textContent = elm.id;
-
-    serving.appendChild(clone);
-  });
-}
-
-/* function getLabels(data) {
-  let imgName;
-  data.taps.forEach((elm) => {
-    const nameLower = elm.beer.toLowerCase();
-    const lowerOneWord = nameLower.replaceAll(" ", "");
-    imgName = `${lowerOneWord}.png`;
-    console.log("LOWERCASE", imgName);
-  });
-
-  return imgName;
-} */
-
 countdown();
 
 function countdown() {
-  console.log("COUNTDOWN");
   let start = new Date();
   start.setHours(22, 0, 0);
 

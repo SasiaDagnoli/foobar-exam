@@ -14,7 +14,7 @@
 @use "styles/animations";
 @use "styles/loginform";
 
-.betjenesnu {
+.servingnow {
   border: 2px solid transparent;
   background-color: #ffffff;
   border-radius: 15px;
@@ -33,7 +33,7 @@
   width: 10%;
 }
 
-.dagensdiv {
+.tapwrapper {
   display: flex;
 }
 
@@ -63,7 +63,7 @@ body {
   background-color: #292e3d;
 }
 
-.antal {
+.amount {
   border: 1px solid transparent;
   border-radius: 5px;
   background-color: white;
@@ -71,7 +71,7 @@ body {
   height: 20px;
 }
 
-.lagerflex {
+.storageflex {
   display: flex;
   align-items: baseline;
   gap: 10px;
@@ -106,18 +106,18 @@ body {
   margin: 20px 10px 10px 10px;
 }
 
-.dagensdiv {
+.tapwrapper {
   border: 2px solid white;
   border-radius: 20px;
   margin: 10px 10px 10px 0px;
   padding: 0px 5px 5px 5px;
 }
 
-.dagensdiv h2 {
+.tapwrapper h2 {
   font-size: 1.5rem;
 }
 
-.dagensdiv p {
+.tapwrapper p {
   font-size: 1rem;
 }
 

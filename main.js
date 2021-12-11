@@ -116,7 +116,7 @@ function displayOnTapData(data) {
     const klon = temptap.cloneNode(true).content;
     klon.querySelector(".tapwrapper").dataset.name = elm.beer;
     klon.querySelector(".name").textContent = elm.beer;
-    klon.querySelector(".ontapimg").src = `img/${imgName}`;
+    //klon.querySelector(".ontapimg").src = `img/${imgName}`;
     dagens.appendChild(klon);
   });
 }
@@ -320,6 +320,12 @@ function countdown() {
     setTimeout(tick, 1000);
   }
 
+  tick();
+}
+
+loginForm();
+
+function loginForm() {
   const loginForm = document.getElementById("login-form");
   const loginButton = document.getElementById("login-form-submit");
 
@@ -335,6 +341,4 @@ function countdown() {
       alert("Login information not correct");
     }
   });
-
-  tick();
 }

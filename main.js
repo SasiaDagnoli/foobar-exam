@@ -233,6 +233,27 @@ function displayQueueDataCstm(data) {
   document.querySelector(
     ".inlinecstm"
   ).textContent = `QUEUE: ${data.queue.length}`;
+
+  const queueSize = [];
+  if (document.querySelectorAll(".baren").length < 18) {
+    queueSize.push(data.queue.length);
+  } else {
+    let elements = document.getElementsByClassName("baren");
+    let required = elements[0];
+    required.remove();
+    queueSize.push(data.queue.length);
+  }
+
+  const bar = document.querySelector(".barscstm");
+  const bartemp = document.querySelector(".thequeue");
+
+  queueSize.forEach((elm) => {
+    const klon = bartemp.cloneNode(true).content;
+    klon.querySelector(".baren").style.height =
+      data.queue.length.toString() + "0px";
+
+    bar.appendChild(klon);
+  });
 }
 
 function displayOnTapDataCstm(data) {
@@ -264,6 +285,27 @@ function updateQueueDataCstm(data) {
   document.querySelector(
     ".inlinecstm"
   ).textContent = `QUEUE: ${data.queue.length}`;
+
+  const queueSize = [];
+  if (document.querySelectorAll(".baren").length < 18) {
+    queueSize.push(data.queue.length);
+  } else {
+    let elements = document.getElementsByClassName("baren");
+    let required = elements[0];
+    required.remove();
+    queueSize.push(data.queue.length);
+  }
+
+  const bar = document.querySelector(".barscstm");
+  const bartemp = document.querySelector(".thequeue");
+
+  queueSize.forEach((elm) => {
+    const klon = bartemp.cloneNode(true).content;
+    klon.querySelector(".baren").style.height =
+      data.queue.length.toString() + "0px";
+
+    bar.appendChild(klon);
+  });
 }
 
 function updateOntapDataCstm(data) {
@@ -323,7 +365,17 @@ function countdown() {
   tick();
 }
 
-loginForm();
+document.querySelector(".loginbutton").addEventListener("click", clickLoginNav);
+
+function clickLoginNav() {
+  document
+    .querySelector(".loginbutton")
+    .removeEventListener("click", clickLoginNav);
+  document.querySelector(".forcustomers").classList.add("hidden");
+  document.querySelector(".login").classList.remove("hidden");
+
+  loginForm();
+}
 
 function loginForm() {
   const loginForm = document.getElementById("login-form");
@@ -335,10 +387,27 @@ function loginForm() {
     const password = loginForm.password.value;
 
     if (username === "manager" && password === "manager") {
-      document.querySelector(".forcustomers").classList.add("hidden");
+      document.querySelector(".login").classList.add("hidden");
       document.querySelector(".forstaff").classList.remove("hidden");
+      document.querySelector(".loginbutton").textContent = "Log out";
+      document.querySelector(".addwhenloggedin").textContent = "Hello, Manager";
     } else {
       alert("Login information not correct");
     }
   });
+
+  document.querySelector(".loginbutton").addEventListener("click", logOut);
+}
+
+function logOut() {
+  document.querySelector(".addwhenloggedin").textContent = "";
+  document.querySelector(".loginbutton").removeEventListener("click", logOut);
+  document.querySelector(".forstaff").classList.add("hidden");
+  document.querySelector(".forcustomers").classList.remove("hidden");
+  document.querySelector(".login").classList.add("hidden");
+  document.querySelector(".loginbutton").textContent = "Login";
+
+  document
+    .querySelector(".loginbutton")
+    .addEventListener("click", clickLoginNav);
 }

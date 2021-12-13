@@ -17,23 +17,56 @@
   #hourscstm,
   #minutescstm,
   #secondscstm {
-    width: 90px;
-    font-size: 6rem;
+    font-size: 3rem;
   }
 
   .forcustomers {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
   }
 
   .todaysbeercstm {
-    grid-row: 1/3;
+    grid-row: 2/4;
+    grid-column: 1/3;
   }
-  .timeandservingcstm {
+  .datatodaycstm {
     display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    button {
+      grid-column: 2;
+      grid-row: 4;
+    }
   }
-
+  .greeting {
+    grid-column: 1/3;
+    text-align: left;
+    h1 {
+      font-size: 7rem;
+      margin-left: 2rem;
+      margin-top: 2rem;
+    }
+    p {
+      margin-left: 2.5rem;
+    }
+  }
+  /* .timeandservingcstm {
+    display: grid;
+  } */
+  /* 
   .loggedinandqueue {
     display: grid;
+  } */
+  .timeandservingcstm {
+    grid-column: 3;
+    grid-row: 1/4;
+    margin-top: 85px;
+  }
+
+  .todaysbeercstm {
+    button {
+      float: right;
+    }
   }
 }

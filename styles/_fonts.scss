@@ -6,11 +6,25 @@ h2 {
   font: 100% $font-stack;
   font-weight: 500;
   font-size: 2rem;
-  color: $font-color;
+  color: #4d4f54;
+}
+
+.todaysbeercstm {
+  button {
+    font: 100% $font-stack;
+    font-weight: 500;
+  }
+}
+
+.lager {
+  .name,
+  p {
+    font-size: 1.5rem;
+  }
 }
 
 p {
-  color: $font-color;
+  color: #4d4f54;
   font: 100% $font-stack;
   font-weight: 400;
   font-size: 1.5rem;
@@ -43,4 +57,12 @@ p {
 
 .tapwrapper p {
   font-size: 1rem;
+}
+
+.greeting {
+  text-align: center;
+  margin-bottom: 30px;
+  h1 {
+    font-size: 2.5rem;
+  }
 }

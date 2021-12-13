@@ -10,29 +10,38 @@
   </head>
   <body>
     <main>
+      <nav>
+        <h1 class="loginbutton">Login</h1>
+        <p class="addwhenloggedin"></p>
+      </nav>
       <section class="forstaff hidden">
         <div class="dagens generel">
           <h2>ON TAP TODAY:</h2>
           <div class="dagens-data"></div>
         </div>
-        <div class="medarbejderinfo generel">
-          <h2>STAFF:</h2>
-          <div class="medarbejderinfo-data"></div>
-        </div>
-        <div class="loggedinandqueue">
-          <div class="loggedin generel">
-            <h2>YOU ARE LOGGED IN AS MANAGER</h2>
+        <div class="storageandstaff">
+          <div class="medarbejderinfo generel">
+            <h2>STAFF:</h2>
+            <div class="medarbejderinfo-data"></div>
           </div>
+          <div class="lager generel">
+            <h2>STORAGE:</h2>
+            <div class="lager-data"></div>
+          </div>
+        </div>
+        <!-- <div class="queue generel">
+          <h2 class="inline"></h2>
+          <div class="bars"></div>
+        </div> -->
+        <!-- <div class="lager generel">
+          <h2>STORAGE:</h2>
+          <div class="lager-data"></div>
+        </div> -->
+        <div class="tidogbetjenes">
           <div class="queue generel">
             <h2 class="inline"></h2>
             <div class="bars"></div>
           </div>
-        </div>
-        <div class="lager generel">
-          <h2>STORAGE:</h2>
-          <div class="lager-data"></div>
-        </div>
-        <div class="tidogbetjenes">
           <div class="hvembetjenes generel">
             <h2>SERVING:</h2>
             <div class="hvembetjenes-data"></div>
@@ -51,43 +60,29 @@
       </section>
 
       <section class="forcustomers">
+        <div class="greeting">
+          <h1>Welcome to Foobar!</h1>
+          <p>Try our fantastic beers!</p>
+        </div>
         <div class="todaysbeercstm generel">
           <h2>ON TAP TODAY:</h2>
-          <div class="datatodaycstm"></div>
+          <div class="datatodaycstm">
+            <!--  <button>PLACE YOUR ORDER!</button> -->
+          </div>
+          <button>PLACE YOUR ORDER!</button>
         </div>
-        <!-- <div class="buybeer generel">
-          <h2>BUY BEER:</h2>
-        </div> -->
-        <div class="queuecstm generel">
-          <h2 class="inlinecstm"></h2>
-        </div>
-        <!-- <div class="login generel">
-          <h2>LOGIN:</h2>
-          <form id="login-form">
-            <input
-              type="text"
-              name="username"
-              id="username-field"
-              class="login-form-field"
-              placeholder="Username"
-            />
-            <input
-              type="password"
-              name="password"
-              id="password-field"
-              class="login-form-field"
-              placeholder="Password"
-            />
-            <input type="submit" value="Login" id="login-form-submit" />
-          </form>
-        </div> -->
         <div class="timeandservingcstm">
+          <div class="queuecstm generel">
+            <h2 class="inlinecstm"></h2>
+            <div class="barscstm"></div>
+          </div>
+
           <div class="servingcstm generel">
             <h2>SERVING:</h2>
             <div class="servingnowcstm"></div>
           </div>
           <div class="timecstm generel">
-            <h2>TIME TO CLOSE:</h2>
+            <h2>TIME UNTIL CLOSE:</h2>
             <div class="countdowncstm">
               <p id="hourscstm"></p>
               <p class="betweencountdown">:</p>
@@ -97,32 +92,26 @@
             </div>
           </div>
         </div>
-        <div class="buybeer generel">
-          <h2>BUY BEER:</h2>
-        </div>
-        <div class="login generel">
+      </section>
+      <section class="login hidden">
+        <form id="login-form">
           <h2>LOGIN:</h2>
-          <form id="login-form">
-            <input
-              type="text"
-              name="username"
-              id="username-field"
-              class="login-form-field"
-              placeholder="Username"
-            />
-            <input
-              type="password"
-              name="password"
-              id="password-field"
-              class="login-form-field"
-              placeholder="Password"
-            />
-            <input type="submit" value="Login" id="login-form-submit" />
-          </form>
-        </div>
-        <!-- <div class="queuecstm generel">
-          <h2 class="inlinecstm"></h2>
-        </div> -->
+          <input
+            type="text"
+            name="username"
+            id="username-field"
+            class="login-form-field"
+            placeholder="Username"
+          />
+          <input
+            type="password"
+            name="password"
+            id="password-field"
+            class="login-form-field"
+            placeholder="Password"
+          />
+          <input type="submit" value="Login" id="login-form-submit" />
+        </form>
       </section>
     </main>
 

@@ -1,16 +1,13 @@
 .generel {
-  border: 2px solid transparent;
-  background-color: #3b4258;
+  background-color: white;
   border-radius: 40px;
   width: auto;
   padding: 20px;
   margin: 10px 20px 5px 20px;
+  box-shadow: 4px 2px 15px 2px #dbdbdb;
 }
 
 .servingnow {
-  border: 2px solid transparent;
-  background-color: #ffffff;
-  border-radius: 15px;
   width: fit-content;
   padding: 10px;
   margin: 10px;
@@ -24,10 +21,6 @@
 
 .ontapimg {
   width: 10%;
-}
-
-.tapwrapper {
-  display: flex;
 }
 
 .ontapflex {
@@ -58,7 +51,7 @@
 
 .storageflex {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
   margin-bottom: 5px;
 }
@@ -84,16 +77,11 @@
 #hourscstm,
 #minutescstm,
 #secondscstm {
-  background-color: white;
-  border: 1px solid transparent;
-  border-radius: 20px;
   padding: 15px;
   margin: 20px 10px 10px 10px;
 }
 
 .tapwrapper {
-  border: 2px solid white;
-  border-radius: 20px;
   margin: 10px 10px 10px 0px;
   padding: 0px 5px 5px 5px;
 }

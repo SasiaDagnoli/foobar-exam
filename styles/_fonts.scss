@@ -1,18 +1,31 @@
 $font-stack: Program, sans-serif;
-$font-color: white;
+$font-color: #4d4f54;
 
 h1,
 h2 {
   font: 100% $font-stack;
   font-weight: 500;
   font-size: 2rem;
-  color: #4d4f54;
+  color: $font-color;
 }
 
 .todaysbeercstm {
   button {
     font: 100% $font-stack;
     font-weight: 500;
+    font-size: 1.2rem;
+  }
+}
+
+nav {
+  h1 {
+    font-weight: 400;
+    text-decoration: underline;
+  }
+  p {
+    font-weight: 500;
+    color: #f6cc4f;
+    font-size: 3rem;
   }
 }
 
@@ -24,7 +37,7 @@ h2 {
 }
 
 p {
-  color: #4d4f54;
+  color: $font-color;
   font: 100% $font-stack;
   font-weight: 400;
   font-size: 1.5rem;
@@ -36,12 +49,12 @@ p {
 #hourscstm,
 #minutescstm,
 #secondscstm {
-  color: #3b4258;
+  color: $font-color;
   text-align: center;
 }
 
 .servingnow {
-  color: #3b4258;
+  color: $font-color;
 }
 
 ::placeholder {
@@ -64,5 +77,18 @@ p {
   margin-bottom: 30px;
   h1 {
     font-size: 2.5rem;
+    color: #f6cc4f;
+  }
+}
+
+input[type="submit"] {
+  font: 100% $font-stack;
+  font-weight: 500;
+}
+
+#login-form {
+  h2 {
+    text-align: center;
+    color: $font-color;
   }
 }

@@ -1,6 +1,6 @@
 .login-form-field {
   background-color: transparent;
-  border: 2px solid white;
+  border: 3px solid #f6cc4f;
   border-radius: 5px;
   padding: 10px;
   margin: 10px 0px 10px 0px;
@@ -12,8 +12,20 @@
   width: 350px;
   margin-left: auto;
   margin-right: auto;
+  padding: 50px;
+  input[type="submit"] {
+    background-color: #fdb3d4;
+    border: transparent;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+  }
 }
 
 .hidden {
   display: none;
+}
+
+input:valid {
+  border-color: #acdd9a;
 }

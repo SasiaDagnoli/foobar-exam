@@ -28,7 +28,7 @@ function displayTypeData(dataTyper) {
     const parents = document.querySelectorAll(`[data-name="${type.name}"]`);
     if (parents.length) {
       parents.forEach((parent) => {
-        parent.querySelector(".alc").textContent = type.alc;
+        parent.querySelector(".alc").textContent = `Alc: ${type.alc}`;
         parent.querySelector(".type").textContent = type.category;
       });
     }
@@ -36,7 +36,6 @@ function displayTypeData(dataTyper) {
 }
 
 function updateData(data) {
-  updateStaffData(data);
   updateQueueData(data);
   updateServingData(data);
   updateTapData(data);
@@ -137,14 +136,6 @@ function displayStorageData(data) {
       klon.querySelector(".amount").classList.add("colorunder5");
     }
     lager.appendChild(klon);
-  });
-}
-
-function updateStaffData(data) {
-  data.bartenders.forEach((elm) => {
-    document.querySelector(
-      `[data-bartendername="${elm.name}"] .status`
-    ).textContent = elm.status;
   });
 }
 
@@ -390,7 +381,8 @@ function loginForm() {
       document.querySelector(".login").classList.add("hidden");
       document.querySelector(".forstaff").classList.remove("hidden");
       document.querySelector(".loginbutton").textContent = "Log out";
-      document.querySelector(".addwhenloggedin").textContent = "Hello, Manager";
+      document.querySelector(".addwhenloggedin").textContent =
+        "Hello, Manager!";
     } else {
       alert("Login information not correct");
     }

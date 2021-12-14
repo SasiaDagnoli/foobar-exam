@@ -29,14 +29,6 @@
             <div class="lager-data"></div>
           </div>
         </div>
-        <!-- <div class="queue generel">
-          <h2 class="inline"></h2>
-          <div class="bars"></div>
-        </div> -->
-        <!-- <div class="lager generel">
-          <h2>STORAGE:</h2>
-          <div class="lager-data"></div>
-        </div> -->
         <div class="tidogbetjenes">
           <div class="queue generel">
             <h2 class="inline"></h2>
@@ -64,7 +56,7 @@
           <h1>Welcome to Foobar!</h1>
           <p>Try our fantastic beers!</p>
         </div>
-        <div class="todaysbeercstm generel">
+        <div class="todaysbeercstm generelcstm">
           <h2>ON TAP TODAY:</h2>
           <div class="datatodaycstm">
             <!--  <button>PLACE YOUR ORDER!</button> -->
@@ -72,16 +64,16 @@
           <button>PLACE YOUR ORDER!</button>
         </div>
         <div class="timeandservingcstm">
-          <div class="queuecstm generel">
+          <div class="queuecstm generelcstm">
             <h2 class="inlinecstm"></h2>
             <div class="barscstm"></div>
           </div>
 
-          <div class="servingcstm generel">
+          <div class="servingcstm generelcstm">
             <h2>SERVING:</h2>
             <div class="servingnowcstm"></div>
           </div>
-          <div class="timecstm generel">
+          <div class="timecstm generelcstm">
             <h2>TIME UNTIL CLOSE:</h2>
             <div class="countdowncstm">
               <p id="hourscstm"></p>
@@ -94,14 +86,15 @@
         </div>
       </section>
       <section class="login hidden">
-        <form id="login-form">
-          <h2>LOGIN:</h2>
+        <form id="login-form" class="generel">
+          <h2>LOGIN</h2>
           <input
             type="text"
             name="username"
             id="username-field"
             class="login-form-field"
             placeholder="Username"
+            required
           />
           <input
             type="password"
@@ -109,17 +102,16 @@
             id="password-field"
             class="login-form-field"
             placeholder="Password"
+            required
           />
-          <input type="submit" value="Login" id="login-form-submit" />
+          <input type="submit" value="LOGIN" id="login-form-submit" />
         </form>
       </section>
     </main>
 
     <template class="staff">
       <div class="flex">
-        <div class="avatar">
-          <img src="img/bartenderavatar.svg" alt="" />
-        </div>
+        <img class="avatar" src="img/avatar.png" alt="" />
         <p class="employee"></p>
         <p class="status"></p>
       </div>

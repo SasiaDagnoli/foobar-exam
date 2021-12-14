@@ -1,16 +1,29 @@
 .generel {
   background-color: white;
   border-radius: 40px;
+  border: 3px solid #f6cc4f;
   width: auto;
   padding: 20px;
-  margin: 10px 20px 5px 20px;
-  box-shadow: 4px 2px 15px 2px #dbdbdb;
+  margin: 0.5rem;
+  box-shadow: 4px 2px 10px 2px #e4e4e4;
+}
+
+.generelcstm {
+  background-color: white;
+  border-radius: 40px;
+  border: 3px solid #f6cc4f;
+  width: auto;
+  padding: 20px;
+  margin: 10px 10px 10px 10px;
+  box-shadow: 4px 2px 15px 2px #e4e4e4;
 }
 
 .servingnow {
   width: fit-content;
   padding: 10px;
   margin: 10px;
+  background-color: #fdb3d4;
+  border-radius: 15px;
 }
 
 .hvembetjenes-data,
@@ -29,12 +42,8 @@
 }
 
 .avatar {
-  border: 1px solid transparent;
-  border-radius: 20px;
-  width: 40px;
-  height: 40px;
-  background-color: white;
-  margin: 0px 8px 8px 0px;
+  width: 10%;
+  padding: 5px;
 }
 .flex {
   display: flex;
@@ -57,11 +66,12 @@
 }
 
 .colorover5 {
-  background: linear-gradient(to right, #56ab2f, #a8e063);
+  border: 3px solid #acdd9a;
 }
 
 .colorunder5 {
-  background: linear-gradient(to left, #ed213a, #93291e);
+  /* background: #f35757; */
+  border: 3px solid #f35757;
 }
 
 .countdown,
@@ -84,4 +94,16 @@
 .tapwrapper {
   margin: 10px 10px 10px 0px;
   padding: 0px 5px 5px 5px;
+}
+
+.todaysbeercstm {
+  button {
+    background-color: #fdb3d4;
+    border: transparent;
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+    height: 35px;
+    cursor: pointer;
+  }
 }

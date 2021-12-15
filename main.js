@@ -2,11 +2,13 @@
 
 window.addEventListener("DOMContentLoaded", fetchData);
 
+//Fetching the data with an async function
 async function fetchData(first = true) {
   const resultat = await fetch("https://bandoen.herokuapp.com/");
   const data = await resultat.json();
 
   console.log("data", data);
+  //Check if it's the first time the function is being called
   if (first) {
     fetchTypes();
     displayData(data);
@@ -17,6 +19,7 @@ async function fetchData(first = true) {
   }
 }
 
+//Fetching the beertype data
 async function fetchTypes() {
   const resultatTyper = await fetch("https://bandoen.herokuapp.com/beertypes");
   const dataTyper = await resultatTyper.json();
@@ -30,11 +33,13 @@ function displayTypeData(dataTyper) {
       parents.forEach((parent) => {
         parent.querySelector(".alc").textContent = `Alc: ${type.alc}`;
         parent.querySelector(".type").textContent = type.category;
+        parent.querySelector(".ontapimg").src = `./img/${type.label}`;
       });
     }
   });
 }
 
+//Calling the functions that updates the data
 function updateData(data) {
   updateQueueData(data);
   updateServingData(data);
@@ -42,6 +47,7 @@ function updateData(data) {
   updateStorageData(data);
 }
 
+//Calling the functions that displays the data
 function displayData(data) {
   displayStaffData(data);
   displayQueueData(data);
@@ -50,6 +56,7 @@ function displayData(data) {
   displayStorageData(data);
 }
 
+//Display data about staff
 function displayStaffData(data) {
   const medarbejderinfo = document.querySelector(".medarbejderinfo-data");
   const temp = document.querySelector(".staff");
@@ -63,8 +70,10 @@ function displayStaffData(data) {
 }
 
 function displayQueueData(data) {
+  //Getting how many people are in queue
   document.querySelector(".inline").textContent = `KØ: ${data.queue.length}`;
 
+  //An empty array that will store the barchart
   const queueSize = [];
   if (document.querySelectorAll(".baren").length < 18) {
     queueSize.push(data.queue.length);
@@ -80,6 +89,7 @@ function displayQueueData(data) {
 
   queueSize.forEach((elm) => {
     const klon = bartemp.cloneNode(true).content;
+    //Setting the height of the bars to the queuesize
     klon.querySelector(".baren").style.height =
       data.queue.length.toString() + "0px";
 
@@ -103,13 +113,13 @@ function displayOnTapData(data) {
   const dagens = document.querySelector(".dagens-data");
   const temptap = document.querySelector(".temptap");
 
-  let imgName;
+  /*  let imgName;
   data.taps.forEach((elm) => {
     const nameLower = elm.beer.toLowerCase();
     const lowerOneWord = nameLower.replaceAll(" ", "");
     imgName = `${lowerOneWord}.png`;
     console.log("LOWERCASE", imgName);
-  });
+  }); */
 
   data.taps.forEach((elm) => {
     const klon = temptap.cloneNode(true).content;
@@ -129,7 +139,9 @@ function displayStorageData(data) {
     klon.querySelector(".storageflex").dataset.storagebar = elm.name;
     klon.querySelector(".name").textContent = elm.name;
     klon.querySelector(".amounttxt").textContent = elm.amount;
+    //Setting the width of the bars === amount
     klon.querySelector(".amount").style.width = elm.amount.toString() + "0px";
+    //Setting the color of the bars depending on how much is left in storage
     if (elm.amount > 5) {
       klon.querySelector(".amount").classList.add("colorover5");
     } else {
@@ -321,12 +333,14 @@ function updateServingDataCstm(data) {
   });
 }
 
+//Calling the fetchData function every 10 seconds
 setInterval(function () {
   fetchData(false);
 }, 10000);
 
 countdown();
 
+//Countdown until 22:00
 function countdown() {
   let start = new Date();
   start.setHours(22, 0, 0);
@@ -362,7 +376,9 @@ function clickLoginNav() {
   document
     .querySelector(".loginbutton")
     .removeEventListener("click", clickLoginNav);
+  //Hide customer dashboard when clicking login
   document.querySelector(".forcustomers").classList.add("hidden");
+  //Displaying the login form
   document.querySelector(".login").classList.remove("hidden");
 
   loginForm();
@@ -377,13 +393,20 @@ function loginForm() {
     const username = loginForm.username.value;
     const password = loginForm.password.value;
 
+    //Checking if the username and password are correct
     if (username === "manager" && password === "manager") {
+      //Hide the login form when login information are correct
       document.querySelector(".login").classList.add("hidden");
+      //Displaying the staff dashboard
       document.querySelector(".forstaff").classList.remove("hidden");
+      //Setting the text to logout
       document.querySelector(".loginbutton").textContent = "Log out";
+      //Displaying manager greeting
       document.querySelector(".addwhenloggedin").textContent =
         "Hello, Manager!";
-    } else {
+    }
+    //Login information are not correct - then display alert
+    else {
       alert("Login information not correct");
     }
   });
@@ -391,6 +414,7 @@ function loginForm() {
   document.querySelector(".loginbutton").addEventListener("click", logOut);
 }
 
+//Handles log out
 function logOut() {
   document.querySelector(".addwhenloggedin").textContent = "";
   document.querySelector(".loginbutton").removeEventListener("click", logOut);

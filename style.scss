@@ -6,6 +6,7 @@
 @use "styles/loginform";
 @use "styles/tablet";
 @use "styles/nav";
+@use "styles/mobile";
 
 * {
   margin: 0;
@@ -16,5 +17,4 @@ body {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  overflow: hidden;
 }

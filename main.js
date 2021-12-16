@@ -7,7 +7,6 @@ async function fetchData(first = true) {
   const resultat = await fetch("https://bandoen.herokuapp.com/");
   const data = await resultat.json();
 
-  console.log("data", data);
   //Check if it's the first time the function is being called
   if (first) {
     fetchTypes();
@@ -113,19 +112,10 @@ function displayOnTapData(data) {
   const dagens = document.querySelector(".dagens-data");
   const temptap = document.querySelector(".temptap");
 
-  /*  let imgName;
-  data.taps.forEach((elm) => {
-    const nameLower = elm.beer.toLowerCase();
-    const lowerOneWord = nameLower.replaceAll(" ", "");
-    imgName = `${lowerOneWord}.png`;
-    console.log("LOWERCASE", imgName);
-  }); */
-
   data.taps.forEach((elm) => {
     const klon = temptap.cloneNode(true).content;
     klon.querySelector(".tapwrapper").dataset.name = elm.beer;
     klon.querySelector(".name").textContent = elm.beer;
-    //klon.querySelector(".ontapimg").src = `img/${imgName}`;
     dagens.appendChild(klon);
   });
 }

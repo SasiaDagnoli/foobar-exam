@@ -22,11 +22,6 @@ nav {
     font-weight: 400;
     text-decoration: underline;
   }
-  p {
-    font-weight: 500;
-    color: #f6cc4f;
-    font-size: 3rem;
-  }
 }
 
 .lager {
@@ -41,6 +36,14 @@ p {
   font: 100% $font-stack;
   font-weight: 400;
   font-size: 1.5rem;
+}
+
+.addwhenloggedin {
+  font-weight: 500;
+  color: #f6cc4f;
+  font-size: 3rem;
+  margin-bottom: 40px;
+  margin-left: 10px;
 }
 
 #hours,

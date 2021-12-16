@@ -402,6 +402,7 @@ function loginForm() {
       //Setting the text to logout
       document.querySelector(".loginbutton").textContent = "Log out";
       //Displaying manager greeting
+      document.querySelector(".addwhenloggedin").classList.remove("hidden");
       document.querySelector(".addwhenloggedin").textContent =
         "Hello, Manager!";
     }

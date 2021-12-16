@@ -33,7 +33,7 @@ function displayTypeData(dataTyper) {
       parents.forEach((parent) => {
         parent.querySelector(".alc").textContent = `Alc: ${type.alc}`;
         parent.querySelector(".type").textContent = type.category;
-        /* parent.querySelector(".ontapimg").src = `./img/${type.label}`; */
+        parent.querySelector(".ontapimg").src = `./img/${type.label}`;
       });
     }
   });
